@@ -1,6 +1,6 @@
 name: flutter_url_shortener
-description: A URL shortener built with Flutter using bitly API service
-version: 1.0.0
+description: This is a package that using bitly API service for generate shorten url. They could begin with the bit.ly domain or your own custom branded short domain (BSD)
+version: 1.0.1
 homepage: https://github.com/HadesPTIT/flutter_url_shortener
 
 environment:

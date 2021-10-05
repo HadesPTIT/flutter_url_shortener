@@ -1,17 +1,3 @@
-# flutter_url_shortener
-
-A URL shortener built with Flutter using [Bitly API service](https://dev.bitly.com/api-reference)
-
-## Getting Started 
-
-First, you need to register account and get token from [here](https://bitly.com/)
-
-* Converts a long url to a Bitlink.
-* Converts a long url to a Bitlink and sets additional parameters.
-
-### Example
-
-```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_url_shortener/flutter_url_shortener.dart';
 
@@ -97,10 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
           _shortenURL = value.link;
         });
       });
-    } on BitlyException catch (e) {
-      // TODO
-    } on Exception catch (e) {
-      // TODO
+    } on BitlyException catch (_) {
+      //
+    } on Exception catch (_) {
+      //
     }
   }
 
@@ -127,12 +113,10 @@ class _MyHomePageState extends State<MyHomePage> {
           _customURL = value.link;
         });
       });
-    } on BitlyException catch (e) {
-      // TODO
-    } on Exception catch (e) {
-      // TODO
+    } on BitlyException catch (_) {
+      //
+    } on Exception catch (_) {
+      //
     }
   }
 }
-
-```
