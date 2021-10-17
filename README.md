@@ -11,85 +11,10 @@ First, you need to register account and get token from [here](https://bitly.com/
 
 ### Example
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_url_shortener/flutter_url_shortener.dart';
+> Converts a long url to a Bitlink and sets additional parameters.
 
-void main() {
-  /// Setup token key before using
-  FShort.instance.setup(token: 'a5xxx7a59eb1115b2dfdd3f0caa76d8cc592257d');
-
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String _shortenURL = '';
-  String _customURL = '';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'https://www.google.com.vn',
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(_shortenURL),
-              height: 60,
-            ),
-            FlatButton(
-              color: Colors.blue,
-              child: Text('Shorten a link'),
-              onPressed: () => _genShortenUrl,
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Text(_customURL),
-              height: 60,
-            ),
-            FlatButton(
-              color: Colors.blue,
-              child: Text('Create a Bitlink'),
-              onPressed: () => _createBitLink,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _genShortenUrl() {
-    try {
+~~~dart
+try {
       FShort.instance
           .generateShortenURL(longUrl: 'https://www.google.com.vn/')
           .then((value) {
@@ -102,10 +27,12 @@ class _MyHomePageState extends State<MyHomePage> {
     } on Exception catch (e) {
       // TODO
     }
-  }
+~~~
 
-  void _createBitLink() {
-    try {
+> Converts a long url to a Bitlink.
+
+~~~dart
+try {
       FShort.instance
           .createBitLink(
               params: BitlyParams(
@@ -132,7 +59,4 @@ class _MyHomePageState extends State<MyHomePage> {
     } on Exception catch (e) {
       // TODO
     }
-  }
-}
-
-```
+~~~

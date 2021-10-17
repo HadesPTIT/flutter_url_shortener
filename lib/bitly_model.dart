@@ -1,16 +1,19 @@
+///
+/// [BitlyModel]
+///
 class BitlyModel {
-  String link;
-  String id;
-  String longUrl;
-  String title;
-  bool archived;
-  String createdAt;
-  String createdBy;
-  String clientId;
-  List<String> customBitlinks;
-  List<String> tags;
-  List<String> launchpadIds;
-  List<Deeplinks> deeplinks;
+  String? link;
+  String? id;
+  String? longUrl;
+  String? title;
+  bool? archived;
+  String? createdAt;
+  String? createdBy;
+  String? clientId;
+  List<String>? customBitlinks;
+  List<String>? tags;
+  List<String>? launchpadIds;
+  List<Deeplinks>? deeplinks;
 
   BitlyModel({
     this.link,
@@ -40,9 +43,9 @@ class BitlyModel {
     tags = json['tags']?.cast<String>();
     launchpadIds = json['launchpad_ids']?.cast<String>();
     if (json['deeplinks'] != null) {
-      deeplinks = new List<Deeplinks>();
+      deeplinks = <Deeplinks>[];
       json['deeplinks'].forEach((v) {
-        deeplinks.add(new Deeplinks.fromJson(v));
+        deeplinks!.add(new Deeplinks.fromJson(v));
       });
     }
   }
@@ -61,35 +64,36 @@ class BitlyModel {
     data['tags'] = this.tags;
     data['launchpad_ids'] = this.launchpadIds;
     if (this.deeplinks != null) {
-      data['deeplinks'] = this.deeplinks.map((v) => v.toJson()).toList();
+      data['deeplinks'] = this.deeplinks!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Deeplinks {
-  String guid;
-  String bitlink;
-  String appUriPath;
-  String installUrl;
-  String appGuid;
-  String os;
-  String installType;
-  String created;
-  String modified;
-  String brandGuid;
+  String? guid;
+  String? bitlink;
+  String? appUriPath;
+  String? installUrl;
+  String? appGuid;
+  String? os;
+  String? installType;
+  String? created;
+  String? modified;
+  String? brandGuid;
 
-  Deeplinks(
-      {this.guid,
-      this.bitlink,
-      this.appUriPath,
-      this.installUrl,
-      this.appGuid,
-      this.os,
-      this.installType,
-      this.created,
-      this.modified,
-      this.brandGuid});
+  Deeplinks({
+    this.guid,
+    this.bitlink,
+    this.appUriPath,
+    this.installUrl,
+    this.appGuid,
+    this.os,
+    this.installType,
+    this.created,
+    this.modified,
+    this.brandGuid,
+  });
 
   Deeplinks.fromJson(Map<String, dynamic> json) {
     guid = json['guid'];

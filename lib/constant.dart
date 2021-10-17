@@ -1,3 +1,8 @@
+///
+/// The Bitly V4 API follows the more standard REST convention of utilizing
+/// the HTTP response codes to identify the status of the response.
+/// These include, but are not limited to [StatusCode]
+///
 class StatusCode {
   static const SUCCESS = 200;
   static const CREATED = 201;
