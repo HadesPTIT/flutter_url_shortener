@@ -1,26 +1,28 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/widgets.dart';
 import 'package:flutter_url_shortener/bitly_exception.dart';
 import 'package:flutter_url_shortener/bitly_model.dart';
 import 'package:flutter_url_shortener/bitly_params.dart';
 import 'package:flutter_url_shortener/constant.dart';
 
+///
+/// Singleton
+///
 class FShort {
   FShort._internal();
 
-  static FShort _instance;
+  static FShort? _instance;
 
   static FShort get instance => _instance ??= FShort._internal();
 
-  static String _token;
+  static String? _token;
 
   /// Initital when open app or before generate shorten link
   ///
   /// @param [token] access token to connecting to [Bitly](https://dev.bitly.com/)
   ///
-  void setup({@required String token}) {
+  void setup({required String token}) {
     _token ??= token;
   }
 
@@ -46,9 +48,9 @@ class FShort {
   /// ```
   ///
   Future<BitlyModel> generateShortenURL({
-    @required String longUrl,
-    String groupId,
-    String domain = 'bit.ly',
+    required String longUrl,
+    String? groupId,
+    String? domain = 'bit.ly',
   }) async {
     final client = HttpClient();
     final endPoint = Uri.https('api-ssl.bitly.com', '/v4/shorten');
@@ -109,7 +111,7 @@ class FShort {
   ///     }
   /// ```
   ///
-  Future<BitlyModel> createBitLink({@required BitlyParams params}) async {
+  Future<BitlyModel> createBitLink({required BitlyParams params}) async {
     final client = HttpClient();
     final endPoint = Uri.https('api-ssl.bitly.com', '/v4/bitlinks');
 

@@ -1,8 +1,11 @@
+///
+/// [BitlyException]
+///
 class BitlyException implements Exception {
-  String message;
-  String description;
-  String resource;
-  List<Errors> errors;
+  String? message;
+  String? description;
+  String? resource;
+  List<Errors>? errors;
 
   BitlyException({
     this.message,
@@ -16,9 +19,9 @@ class BitlyException implements Exception {
     description = json['description'];
     resource = json['resource'];
     if (json['errors'] != null) {
-      errors = List<Errors>();
+      errors = <Errors>[];
       json['errors'].forEach((v) {
-        errors.add(Errors.fromJson(v));
+        errors!.add(Errors.fromJson(v));
       });
     }
   }
@@ -29,16 +32,16 @@ class BitlyException implements Exception {
     data['description'] = this.description;
     data['resource'] = this.resource;
     if (this.errors != null) {
-      data['errors'] = this.errors.map((v) => v.toJson()).toList();
+      data['errors'] = this.errors!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Errors {
-  String field;
-  String errorCode;
-  String message;
+  String? field;
+  String? errorCode;
+  String? message;
 
   Errors({this.field, this.errorCode, this.message});
 

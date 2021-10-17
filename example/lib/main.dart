@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_url_shortener/flutter_url_shortener.dart';
 
@@ -17,15 +19,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Flutter Demo Home Page'),
       ),
       body: Center(
         child: Column(
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
           .generateShortenURL(longUrl: 'https://www.google.com.vn/')
           .then((value) {
         setState(() {
-          _shortenURL = value.link;
+          _shortenURL = value.link!;
         });
       });
     } on BitlyException catch (_) {
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ))
           .then((value) {
         setState(() {
-          _customURL = value.link;
+          _customURL = value.link!;
         });
       });
     } on BitlyException catch (_) {

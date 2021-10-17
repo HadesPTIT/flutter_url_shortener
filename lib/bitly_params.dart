@@ -1,10 +1,13 @@
+///
+/// https://dev.bitly.com/api-reference#createFullBitlink
+///
 class BitlyParams {
-  String longUrl;
-  String domain;
-  String groupId;
-  String title;
-  List<String> tags;
-  List<DeeplinkParams> deeplinks;
+  String? longUrl;
+  String? domain;
+  String? groupId;
+  String? title;
+  List<String>? tags;
+  List<DeeplinkParams>? deeplinks;
 
   BitlyParams({
     this.longUrl,
@@ -22,9 +25,9 @@ class BitlyParams {
     title = json['title'];
     tags = json['tags']?.cast<String>();
     if (json['deeplinks'] != null) {
-      deeplinks = List<DeeplinkParams>();
+      deeplinks = <DeeplinkParams>[];
       json['deeplinks'].forEach((v) {
-        deeplinks.add(new DeeplinkParams.fromJson(v));
+        deeplinks!.add(new DeeplinkParams.fromJson(v));
       });
     }
   }
@@ -37,17 +40,20 @@ class BitlyParams {
     data['title'] = this.title;
     data['tags'] = this.tags;
     if (this.deeplinks != null) {
-      data['deeplinks'] = this.deeplinks.map((v) => v.toJson()).toList();
+      data['deeplinks'] = this.deeplinks!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
+///
+/// https://dev.bitly.com/api-reference#createFullBitlink
+///
 class DeeplinkParams {
-  String appId;
-  String appUriPath;
-  String installUrl;
-  String installType;
+  String? appId;
+  String? appUriPath;
+  String? installUrl;
+  String? installType;
 
   DeeplinkParams({
     this.appId,
